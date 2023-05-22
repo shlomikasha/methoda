@@ -2,12 +2,18 @@ pipeline {
     agent any
 
     stages {
-        stage('Merge and Jira Actions') {
+        stage('Checkout and Merge') {
             steps {
-                // Merge your branch into the master branch
+                // Checkout the Git repository and merge the branch into master
+                checkout scm
+                sh "git merge origin/${env.BRANCH_NAME}"
+            }
+        }
 
-                // Extract the Jira issue key from the branch name
+        stage('Jira Actions') {
+            steps {
                 script {
+                    // Extract the Jira issue key from the branch name
                     def branchName = env.BRANCH_NAME
                     def jiraIssueKey = branchName =~ /[A-Z]+-\d+/
                     if (jiraIssueKey) {
