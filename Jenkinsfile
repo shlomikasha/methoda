@@ -45,5 +45,5 @@ def moveJiraIssue(jiraUrl, jiraIssueId) {
         }
     }
     '''
-    httpRequest(url: apiUrl, authentication: 'basicAuth', username: 'your_jira_username', password: 'your_jira_password', contentType: 'application/json', requestBody: requestBody, httpMode: 'POST')
+    httpRequest(url: apiUrl, authentication: 'basicAuth', username: 'shlomikasha', password: 'As124870', contentType: 'application/json', requestBody: requestBody, httpMode: 'POST')
 }
